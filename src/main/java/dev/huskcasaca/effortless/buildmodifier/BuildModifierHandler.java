@@ -31,6 +31,8 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
+import static dev.huskcasaca.effortless.buildreach.ReachHelper.getReachSettings;
+
 public class BuildModifierHandler {
 
     //Called from BuildModes
@@ -134,7 +136,14 @@ public class BuildModifierHandler {
                 var coordinate = coordinates.get(i);
                 if (world.isLoaded(coordinate) && !world.isEmptyBlock(coordinate)) {
                     if (!onlyInstaBreaking || world.getBlockState(coordinate).getDestroySpeed(world, coordinate) == 0f) {
-                        SurvivalHelper.breakBlock(world, player, coordinate, false);
+
+                        if (!getReachSettings(player).requireToolForBreak()
+                                || (!player.getMainHandItem().isEmpty()
+                                && player.getMainHandItem().isCorrectToolForDrops(world.getBlockState(coordinate)))) {
+
+                            SurvivalHelper.breakBlock(world, player, coordinate, false);
+
+                        }
                     }
                 }
             }

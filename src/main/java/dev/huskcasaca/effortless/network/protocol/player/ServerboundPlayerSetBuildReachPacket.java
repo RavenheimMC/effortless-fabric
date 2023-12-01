@@ -16,7 +16,8 @@ public record ServerboundPlayerSetBuildReachPacket(
                         friendlyByteBuf.readInt(),
                         friendlyByteBuf.readBoolean(),
                         friendlyByteBuf.readBoolean(),
-                        friendlyByteBuf.readInt()
+                        friendlyByteBuf.readInt(),
+                        friendlyByteBuf.readBoolean()
                 )
         );
     }

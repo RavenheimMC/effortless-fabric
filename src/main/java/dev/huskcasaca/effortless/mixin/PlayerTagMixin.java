@@ -63,7 +63,8 @@ public abstract class PlayerTagMixin implements EffortlessDataProvider {
                 tag.getInt("maxBlockPlaceAtOnce"),
                 tag.getBoolean("canBreakFar"),
                 tag.getBoolean("enableUndo"),
-                tag.getInt("undoStackSize")
+                tag.getInt("undoStackSize"),
+                tag.getBoolean("requireToolForBreak")
         );
     }
 

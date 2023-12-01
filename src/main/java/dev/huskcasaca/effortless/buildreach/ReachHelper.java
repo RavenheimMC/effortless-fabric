@@ -50,7 +50,8 @@ public class ReachHelper {
                 Math.max(MIN_MAX_BLOCK_PLACE_AT_ONCE, Math.min(reachSettings.maxBlockPlaceAtOnce(), MAX_MAX_BLOCK_PLACE_AT_ONCE)),
                 reachSettings.canBreakFar(),
                 reachSettings.enableUndo(),
-                Math.max(MIN_UNDO_STACK_SIZE, Math.min(reachSettings.undoStackSize(), MAX_UNDO_STACK_SIZE))
+                Math.max(MIN_UNDO_STACK_SIZE, Math.min(reachSettings.undoStackSize(), MAX_UNDO_STACK_SIZE)),
+                reachSettings.requireToolForBreak()
         );
     }
 
@@ -72,7 +73,8 @@ public class ReachHelper {
                 reachSettings.maxBlockPlaceAtOnce(),
                 reachSettings.canBreakFar(),
                 reachSettings.enableUndo(),
-                reachSettings.undoStackSize()
+                reachSettings.undoStackSize(),
+                reachSettings.requireToolForBreak()
         );
         setReachSettings(player, reachSettings);
     }
@@ -93,7 +95,8 @@ public class ReachHelper {
                 reachSettings.maxBlockPlaceAtOnce(),
                 reachSettings.canBreakFar(),
                 reachSettings.enableUndo(),
-                reachSettings.undoStackSize()
+                reachSettings.undoStackSize(),
+                reachSettings.requireToolForBreak()
         );
         setReachSettings(player, reachSettings);
     }
@@ -110,7 +113,8 @@ public class ReachHelper {
                 maxBlockPlaceAtOnce,
                 reachSettings.canBreakFar(),
                 reachSettings.enableUndo(),
-                reachSettings.undoStackSize()
+                reachSettings.undoStackSize(),
+                reachSettings.requireToolForBreak()
         );
         setReachSettings(player, reachSettings);
     }
@@ -127,7 +131,22 @@ public class ReachHelper {
                 reachSettings.maxBlockPlaceAtOnce(),
                 canBreakFar,
                 reachSettings.enableUndo(),
-                reachSettings.undoStackSize()
+                reachSettings.undoStackSize(),
+                reachSettings.requireToolForBreak()
+        );
+        setReachSettings(player, reachSettings);
+    }
+
+    public static void setRequireToolForBreak(Player player, boolean requireToolForBreak) {
+        var reachSettings = getReachSettings(player);
+        reachSettings = new ReachSettings(
+                reachSettings.maxReachDistance(),
+                reachSettings.maxBlockPlacePerAxis(),
+                reachSettings.maxBlockPlaceAtOnce(),
+                reachSettings.canBreakFar(),
+                reachSettings.enableUndo(),
+                reachSettings.undoStackSize(),
+                requireToolForBreak
         );
         setReachSettings(player, reachSettings);
     }
@@ -144,7 +163,8 @@ public class ReachHelper {
                 reachSettings.maxBlockPlaceAtOnce(),
                 reachSettings.canBreakFar(),
                 enableUndo,
-                reachSettings.undoStackSize()
+                reachSettings.undoStackSize(),
+                reachSettings.requireToolForBreak()
         );
         setReachSettings(player, reachSettings);
     }
@@ -161,7 +181,8 @@ public class ReachHelper {
                 reachSettings.maxBlockPlaceAtOnce(),
                 reachSettings.canBreakFar(),
                 reachSettings.enableUndo(),
-                undoStackSize
+                undoStackSize,
+                reachSettings.requireToolForBreak()
         );
         setReachSettings(player, reachSettings);
     }

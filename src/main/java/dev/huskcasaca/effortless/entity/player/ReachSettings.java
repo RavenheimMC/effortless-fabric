@@ -6,7 +6,8 @@ public record ReachSettings(
         int maxBlockPlaceAtOnce,
         boolean canBreakFar,
         boolean enableUndo,
-        int undoStackSize
+        int undoStackSize,
+        boolean requireToolForBreak
 ) {
     public ReachSettings() {
         this(
@@ -15,7 +16,8 @@ public record ReachSettings(
                 10_000,
                 true,
                 false,
-                10
+                10,
+                true
         );
     }
 

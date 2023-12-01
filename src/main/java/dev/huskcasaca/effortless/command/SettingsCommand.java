@@ -102,6 +102,21 @@ public class SettingsCommand {
         var ruleCommand = Commands.literal("buildingrule");
         var playerSettingsCommand = Commands.argument("player", EntityArgument.players());
 
+        playerSettingsCommand.then(Commands.literal("requireToolForBreak").then(Commands.argument("value", BoolArgumentType.bool()).executes(context -> {
+            EntityArgument.getPlayers(context, "player").forEach(player -> {
+                try {
+                    var value = BoolArgumentType.getBool(context, "value");
+                    ReachHelper.setRequireToolForBreak(player, value);
+                    ReachHelper.sync(player);
+                    context.getSource().sendSuccess(Component.translatable("commands.effortless.require_tool_for_break.success", player.getDisplayName(), value), true);
+                } catch (Exception e) {
+                    context.getSource().sendFailure(Component.translatable("commands.effortless.require_tool_for_break.failure", player.getDisplayName()));
+                }
+            });
+            return 0;
+        })));
+
+
         playerSettingsCommand.then(Commands.literal("maxReachDistance").then(Commands.argument("value", IntegerArgumentType.integer(ReachHelper.MIN_MAX_REACH_DISTANCE, ReachHelper.MAX_MAX_REACH_DISTANCE)).executes(context -> {
             EntityArgument.getPlayers(context, "player").forEach(player -> {
                 try {

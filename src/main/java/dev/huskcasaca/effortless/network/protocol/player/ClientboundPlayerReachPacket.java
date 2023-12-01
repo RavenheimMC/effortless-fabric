@@ -16,7 +16,8 @@ public record ClientboundPlayerReachPacket(
                         friendlyByteBuf.readInt(),
                         friendlyByteBuf.readBoolean(),
                         friendlyByteBuf.readBoolean(),
-                        friendlyByteBuf.readInt()
+                        friendlyByteBuf.readInt(),
+                        friendlyByteBuf.readBoolean()
                 )
         );
     }
